@@ -36,23 +36,28 @@ public class Main {
                 String[] newValue = new String[arrayList.size()];
                 newValue = arrayList.toArray(newValue);
                 bigDictionary.put(newKey, newValue);
-               /* System.out.println("Введите любое слово из словаря ");
-                Scanner s = new Scanner(System.in);
-                String world = s.nextLine();
-                String[] words = bigDictionary.get(world);
-                System.out.println(words);*/
 
 
             }
 
-        }System.out.println("Введите фразу? ");
-        Scanner scanner = new Scanner(System.in);
-        String word = scanner.nextLine();
-        String[] words = bigDictionary.get(word);
-        Random r = new Random();
-        System.out.println(words[r.nextInt(words.length)]);
         }
+        for (int i = 0; ; i++) {
 
 
+            System.out.println("Введите фразу? ");
+            Scanner scanner = new Scanner(System.in);
+            String word = scanner.nextLine();
+            String[] words = word.split(" ");
+            for (String other : words) {
+                String[] synonym = bigDictionary.get(other);
+                if (synonym != null) {
+                    Random r = new Random();
+                    System.out.printf(synonym[r.nextInt(synonym.length)] + " \n" );
+                } else
+                    System.out.println("Такого слова нет");
+            }
 
+
+        }
+    }
 }
